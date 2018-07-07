@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Hamburger Icon</title>
+    <style type="text/css">
+
+        /* This section could be your css */
+
+        #page {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+        }
+
+        html, body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background: darkgray;
+        }
+
+        /**
+         * Everything below this point is necessary for this snippet.
+         * You can edit the variables within the :root block.
+         */
+
+        :root {
+            --box-width: 34px;
+            --box-height: 22px;
+            --line-height: 6px;
+            --line-color: white;
+            --animation-time: 0.3s;
+        }
+
+        .c {
+            width: var(--box-width);
+            height: var(--box-height);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .l {
+            width: 100%;
+            position: absolute;
+            border-radius: 2px;
+            height: var(--line-height);
+            background-color: var(--line-color);
+            will-change: top, transform, opacity;
+            transition:
+                    top var(--animation-time) var(--animation-time),
+                    transform var(--animation-time) 0s,
+                    opacity 0s var(--animation-time);
+        }
+
+        .c.open .l {
+            transition:
+                    top var(--animation-time) 0s,
+                    transform var(--animation-time) var(--animation-time),
+                    opacity 0s var(--animation-time);
+        }
+
+        .l.n1{ top: 0; }
+        .l.n2{ top: calc((var(--box-height) / 2) - (var(--line-height) / 2)); }
+        .l.n3{ top: calc(var(--box-height) - (var(--line-height))); }
+        .c.open .n1, .c.open .n3 { top: calc((var(--box-height) / 2) - (var(--line-height) / 2)); }
+        .c.open .n1 { transform: rotate(45deg); }
+        .c.open .n3 { transform: rotate(-45deg); }
+        .c.open .n2 { opacity: 0; }
+    </style>
+    <script>
+        (function() {
+
+            window.addEventListener('load', function() {
+
+                document.querySelector('#page .c').addEventListener('click', function() {
+                    if (this.classList.contains('open')) {
+                        this.classList.remove('open'); return;
+                    }
+                    this.classList.add('open');
+                });
+
+            });
+
+        })();
+    </script>
+</head>
+<body>
+
+<div id="page">
+
+    <div class="c">
+        <span class="l n1"></span>
+        <span class="l n2"></span>
+        <span class="l n3"></span>
+    </div>
+
+</div>
+
+</body>
