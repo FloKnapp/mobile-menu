@@ -7,17 +7,53 @@
 
         /* This section could be your css */
 
-        #page {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-        }
-
         html, body {
             margin: 0;
             width: 100%;
             height: 100%;
             background: darkgray;
+            font-family: Tahoma, Arial, serif;
+            color: white;
+        }
+
+        header {
+            height: 50px;
+            background: #404040;
+        }
+
+        nav {
+            float: right;
+            padding: 0;
+            margin: 0;
+            display: block;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #page {
+            position: absolute;
+            width: 800px;
+            margin-left: -400px;
+            left: 50%;
+            top: 50%;
+            text-align: center;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .col {
+            margin: 0 10px 0 10px;
+        }
+
+        .col.logo {
+            cursor: default;
         }
 
         /**
@@ -26,9 +62,9 @@
          */
 
         :root {
-            --box-width: 34px;
-            --box-height: 22px;
-            --line-height: 6px;
+            --box-width: 28px;
+            --box-height: 18px;
+            --line-height: 2px;
             --line-color: white;
             --animation-time: 0.3s;
         }
@@ -43,7 +79,6 @@
         .l {
             width: 100%;
             position: absolute;
-            border-radius: 2px;
             height: var(--line-height);
             background-color: var(--line-color);
             will-change: top, transform, opacity;
@@ -73,7 +108,7 @@
 
             window.addEventListener('load', function() {
 
-                document.querySelector('#page .c').addEventListener('click', function() {
+                document.querySelector('.c').addEventListener('click', function() {
                     if (this.classList.contains('open')) {
                         this.classList.remove('open'); return;
                     }
@@ -87,14 +122,24 @@
 </head>
 <body>
 
-<div id="page">
+    <header>
+        <div class="row">
+            <div class="col logo">Example.com</div>
+            <div class="col">
+                <nav>
+                    <div class="c">
+                        <span class="l n1"></span>
+                        <span class="l n2"></span>
+                        <span class="l n3"></span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
 
-    <div class="c">
-        <span class="l n1"></span>
-        <span class="l n2"></span>
-        <span class="l n3"></span>
+    <div id="page">
+        <h1>Welcome to Example.com</h1>
+        Feel free to press the navigation icon now
     </div>
-
-</div>
 
 </body>
