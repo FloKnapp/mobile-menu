@@ -44,7 +44,7 @@
             position: absolute;
             right: -150px;
             top: 50px;
-            transition: right calc(var(--animation-time) * 2);
+            transition: right calc(var(--animation-time));
             background-color: #404040;
             width: 150px;
         }
@@ -99,10 +99,11 @@
             --box-height: 18px;
             --line-height: 2px;
             --line-color: white;
-            --animation-time: 0.16s;
+            --animation-time: 0.3s;
         }
 
         .c {
+            --step-animation-time: calc(var(--animation-time) / 2);
             width: var(--box-width);
             height: var(--box-height);
             position: relative;
@@ -116,16 +117,16 @@
             background-color: var(--line-color);
             will-change: top, transform, opacity;
             transition:
-                    top var(--animation-time) var(--animation-time),
-                    transform var(--animation-time) 0s,
-                    opacity 0s var(--animation-time);
+                    top var(--step-animation-time) var(--step-animation-time),
+                    transform var(--step-animation-time) 0s,
+                    opacity 0s var(--step-animation-time);
         }
 
         .c.open .l {
             transition:
-                    top var(--animation-time) 0s,
-                    transform var(--animation-time) var(--animation-time),
-                    opacity 0s var(--animation-time);
+                    top var(--step-animation-time) 0s,
+                    transform var(--step-animation-time) var(--step-animation-time),
+                    opacity 0s var(--step-animation-time);
         }
 
         .l.n1{ top: 0; }
