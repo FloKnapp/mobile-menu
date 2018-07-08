@@ -14,18 +14,13 @@
             background: darkgray;
             font-family: Tahoma, Arial, serif;
             color: white;
+            overflow-x: hidden;
         }
 
         header {
             height: 50px;
             background: #404040;
-        }
-
-        nav {
-            float: right;
-            padding: 0;
-            margin: 0;
-            display: block;
+            position: relative;
         }
 
         h1 {
@@ -35,10 +30,48 @@
         #page {
             position: absolute;
             width: 800px;
+            height: 120px;
             margin-left: -400px;
+            margin-top: -60px;
+            overflow: hidden;
             left: 50%;
             top: 50%;
             text-align: center;
+            background-color: #404040;
+        }
+
+        #nav {
+            position: absolute;
+            right: -150px;
+            top: 50px;
+            transition: right calc(var(--animation-time) * 2);
+            background-color: #404040;
+            width: 150px;
+        }
+
+        .c.open ~ #nav {
+            visibility: visible;
+            right: 0;
+        }
+
+        #nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #nav a {
+            display: block;
+            padding: 12px 10px;
+            color: #CCCCCC;
+            text-decoration: none;
+            text-align: right;
+            transition: background-color 0.3s;
+        }
+
+        #nav a:hover {
+            background-color: #303030;
+            color: #FFFFFF;
         }
 
         .row {
@@ -66,7 +99,7 @@
             --box-height: 18px;
             --line-height: 2px;
             --line-color: white;
-            --animation-time: 0.3s;
+            --animation-time: 0.16s;
         }
 
         .c {
@@ -126,13 +159,18 @@
         <div class="row">
             <div class="col logo">Example.com</div>
             <div class="col">
-                <nav>
-                    <div class="c">
-                        <span class="l n1"></span>
-                        <span class="l n2"></span>
-                        <span class="l n3"></span>
-                    </div>
-                </nav>
+                <div class="c">
+                    <span class="l n1"></span>
+                    <span class="l n2"></span>
+                    <span class="l n3"></span>
+                </div>
+                <div id="nav">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
