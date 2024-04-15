@@ -2,25 +2,27 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>MenuIcon</title>
-    <link rel="stylesheet" type="text/css" href="src/style.css" />
-    <style type="text/css">
+    <title>Animated mobile menu icon</title>
+    <link rel="stylesheet" type="text/css" href="../src/mobile-menu-icon.css" />
+    <style>
+
+        /* This following :root section defines the settings for the mobile menu */
 
         :root {
-            --box-width: 26px;
-            --box-height: 16px;
-            --line-height: 2px;
-            --line-color: white;
-            --animation-time: 0.3s;
+            --mmi-box-width: 26px;
+            --mmi-box-height: 16px;
+            --mmi-line-height: 2px;
+            --mmi-line-color: white;
+            --mmi-animation-time: 0.3s;
         }
 
-        /* This section could be your css */
+        /* The following style is required for the demo markup */
 
         html, body {
             margin: 0;
             width: 100%;
             height: 100%;
-            background: darkgray;
+            background: #202020;
             font-family: Tahoma, Arial, serif;
             color: white;
             overflow-x: hidden;
@@ -46,19 +48,24 @@
             left: 50%;
             top: 50%;
             text-align: center;
-            background-color: #404040;
+            border-radius: 5px;
         }
+
+        /* The markup below will style the submenu */
 
         #nav {
             position: absolute;
             right: -150px;
             top: 50px;
-            transition: right calc(var(--animation-time));
+            transition: right calc(var(--mmi-animation-time));
             background-color: #404040;
             width: 150px;
+            font-size: .7rem;
+            text-transform: uppercase;
+            letter-spacing: .15rem;
         }
 
-        .c.open ~ #nav {
+        .mobile-menu-icon.open ~ #nav {
             visibility: visible;
             right: 0;
         }
@@ -104,7 +111,7 @@
 
             window.addEventListener('load', function() {
 
-                document.querySelector('.c').addEventListener('click', function() {
+                document.querySelector('.mobile-menu-icon').addEventListener('click', function() {
                     if (this.classList.contains('open')) {
                         this.classList.remove('open'); return;
                     }
@@ -120,12 +127,12 @@
 
     <header>
         <div class="row">
-            <div class="col logo">Example.com</div>
+            <div class="col logo">example.com</div>
             <div class="col">
-                <div class="c">
-                    <span class="l n1"></span>
-                    <span class="l n2"></span>
-                    <span class="l n3"></span>
+                <div class="mobile-menu-icon">
+                    <span class="line no1"></span>
+                    <span class="line no2"></span>
+                    <span class="line no3"></span>
                 </div>
                 <div id="nav">
                     <ul>
@@ -139,7 +146,7 @@
     </header>
 
     <div id="page">
-        <h1>Welcome to Example.com</h1>
+        <h1>Welcome</h1>
         Feel free to press the navigation icon now
     </div>
 
